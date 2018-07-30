@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    {% if latest_sender_list %}
+                  {% for sender in latest_sender_list %}
+                      <object type="image/svg+xml" data="{% static  'adress/envelope.svg' %}">Your browser does not support SVGs</object>
+
+<!--
+                                      <img src=" />
+                <object type="image/svg+xml" data="">Your browser does not support SVGs</object>
+                <h1>{{ sender.id }}</h1>
+                <ul>
+                <li>{{ sender.from_name }}</li>
+                <li>{{ sender.from_index }}, {{ sender.from_region }}, {{ sender.from_street }}</li>
+                <li>{{ sender.from_email }}</li>
+                </ul>
+-->
+                  {% endfor %}
+            {% else %}
+                <p>нет отправителей.</p>
+            {% endif %}
+{% endblock %}
+</body>
+</html>

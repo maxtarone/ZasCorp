@@ -1,0 +1,32 @@
+{% extends 'zascat/base.html' %}
+{% block content %}
+    <br/>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/cat/">Каталог</a></li>
+        <li class="breadcrumb-item"><a href="/cat/{{ catalog.id }}">{{ catalog.name }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ preps.prep_name }}</li>
+      </ol>
+    </nav>
+
+       <h1>{{ preps.prep_name }}</h1>
+
+                {% if imgs %}
+                    {% for img in imgs %}
+                        <a href="/media/{{ img.src }}" data-fancybox="gallery" data-caption="Caption #1">
+                            <img src="/media/{{ img.src }}" class="img-thumbnail" width="100px"/>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+                <ul>
+                <li>{{ preps.prep_header }}</li>
+                <li>{{ preps.prep_desc }}</li>
+                <li>{{ preps.prep_desc }}</li>
+                <li>{{ preps.prep_advert|safe }}</li>
+                <li>{{ preps.prep_package_table|safe }}</li>
+                </ul>
+
+    <p>Нет постов</p>
+
+
+{% endblock %}

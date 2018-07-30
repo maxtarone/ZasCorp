@@ -1,0 +1,24 @@
+{% extends 'zascat/base.html' %}
+{% block content %}
+    <br/>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/cat/">Каталог</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ cat_name }}</li>
+          </ol>
+        </nav>
+        <div class="row">
+        {% for preps in preps_list %}
+            <div class="col-sm-4">
+            <div class="media-body">
+            <a href="{{ preps.id }}"> <h5 class="mt-0">{{ preps.prep_name }}</h5></a>
+                <ul>
+                <li>{{ preps.prep_header }}</li>
+                <li>{{ preps.prep_desc }}</li>
+                </ul>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+
+{% endblock %}
