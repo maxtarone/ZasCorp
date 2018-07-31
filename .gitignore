@@ -7,5 +7,5 @@ db.sqlite3
 .DS_Store
 /media
 /assets
-/.idea
+/.ideagit rm -r --cached FolderName
 .idea
