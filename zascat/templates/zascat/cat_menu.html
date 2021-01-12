@@ -1,0 +1,5 @@
+<ul class="dropdown">
+    {% for cat_item in cat_list %}
+        <li><a href="/cat/{{ cat_item.id }}">{{ cat_item.name }}</a></li>
+    {% endfor %}
+</ul>

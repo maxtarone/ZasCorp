@@ -24,7 +24,7 @@ admin.autodiscover()
 urlpatterns = [
     path('admin/', admin.site.urls),
     #    path('', include('adress.urls')),
-    path('cat/', include('zascat.urls')),
+    path('product/', include('zascat.urls')),
 
 ]
 

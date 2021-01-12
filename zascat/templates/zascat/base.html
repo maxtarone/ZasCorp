@@ -1,55 +1,197 @@
 <!DOCTYPE html>
-{% load staticfiles %}
-<html lang="ru" xmlns="http://www.w3.org/1999/html">
-    <head>
-    <title>Зеленая Аптека Садовода</title>
-    <!-- Required meta tags -->
+<html lang="en">
+{% load static %}
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache"/>
+        <!-- Title -->
+    <title>{% block title %}Зеленая Аптека Садовода{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static "zascat/img/core-img/favicon.ico" %}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha256-Md8eaeo67OiouuXAi8t/Xpd8t2+IaJezATVTWbZqSOw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/zascat/css/jquery.fancybox.min.css" />
-    </head>
+    <link rel="stylesheet" href="{% static "zascat/assets/css/bootstrap.min.css" %}">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="{% static "zascat/assets/css/icon-font.min.css" %}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static "zascat/assets/css/plugins.css" %}">
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="{% static "zascat/assets/css/helper.css" %}">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static "zascat/assets/css/style.css" %}">
+    <!-- Modernizer JS -->
+    <script src="{% static "zascat/assets/js/vendor/modernizr-2.8.3.min.js" %}"></script>
+
+</head>
 <body>
+<div class="main-wrapper">
+    <!-- Header Section Start -->
+    <div class="header-section section">
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Hidden brand</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/cat">Каталог</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-    </header>
+        <!-- Header Top Start -->
+        <div class="header-top header-top-one bg-theme-two">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-center">
 
-<div class="container">
+                    <div class="col mt-10 mb-10 d-none d-md-flex">
+                        <!-- Header Top Left Start -->
+                        <div class="header-top-left">
+                            <p>Tel: <a href="tel:+74959678151">+7 (495) 967-81-51</a></p>
+                        </div><!-- Header Top Left End -->
+                    </div>
 
-{{ flatpage.content }}
-             {% block content %}
+                    <div class="col mt-10 mb-10">
 
-             {% endblock %}
+                     </div>
 
-    </div>
+                    <div class="col mt-10 mb-10">
 
-</div> <!-- container -->
+                    </div>
 
- <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha256-xaF9RpdtRxzwYMWg4ldJoyPWqyDPCRD0Cv7YEEe6Ie8=" crossorigin="anonymous"></script>
-<script src="/static/zascat/js/jquery.fancybox.min.js"></script>
+                </div>
+            </div>
+        </div><!-- Header Top End -->
+
+        <!-- Header Bottom Start -->
+        <div class="header-bottom header-bottom-one header-sticky@">
+            <div class="container-fluid">
+                <div class="row menu-center align-items-center justify-content-between">
+
+                    <div class="col mt-15 mb-15">
+                        <!-- Logo Start -->
+                        <div class="header-logo">
+                            <a href="/">
+                                <img src="{% static "zascat/img/core-img/logo.png"%}">
+                            </a>
+                        </div><!-- Logo End -->
+                    </div>
+
+                    <div class="col order-2 order-lg-3">
+
+                    </div>
+
+                    <div class="col order-3 order-lg-2">
+                        <div class="main-menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="/">Главная</a></li>
+                                    <li class="active"><a href="/product/">Продукция</a>
+                                        <ul class="sub-menu">
+                                             {% for cat_item in cat_list %}
+                                                <li><a href="/product/{{ cat_item.cat_hfu }}">{{ cat_item.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">PAGES</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="cart.html">Cart</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="login-register.html">Login & Register</a></li>
+                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="blog.html">BLOG</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="single-blog.html">Single Blog</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">CONTACT</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu order-12 d-block d-lg-none col"></div>
+
+                </div>
+            </div>
+        </div><!-- Header BOttom End -->
+
+    </div><!-- Header Section End -->
+    {% block content %}{% endblock %}
+<!-- Footer Top Section Start -->
+    <div class="footer-top-section section bg-theme-two-light pt-80 pt-lg-60 pt-md-60 pt-sm-60 pt-xs-40 pb-40 pb-lg-20 pb-md-20 pb-sm-20 pb-xs-0">
+        <div class="container">
+            <div class="row">
+
+                <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
+                    <h4 class="title">CONTACT US</h4>
+                    <p>You address will be here<br/> Lorem Ipsum text</p>
+                    <p><a href="tel:01234567890">01234 567 890</a><a href="tel:01234567891">01234 567 891</a></p>
+                    <p><a href="mailto:info@example.com">info@example.com</a><a href="#">www.example.com</a></p>
+                </div>
+
+                <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
+                    <h4 class="title">PRODUCTS</h4>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Seller</a></li>
+                        <li><a href="#">Trendy Items</a></li>
+                        <li><a href="#">Best Deals</a></li>
+                        <li><a href="#">On Sale Products</a></li>
+                        <li><a href="#">Featured Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
+                    <h4 class="title">INFORMATION</h4>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Payment Method</a></li>
+                        <li><a href="#">Product Warranty</a></li>
+                        <li><a href="#">Return Process</a></li>
+                        <li><a href="#">Payment Security</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
+                    <h4 class="title">NEWSLETTER</h4>
+                    <p>Subscribe our newsletter and get all update of our product</p>
+
+                    <form id="mc-form" class="mc-form footer-subscribe-form" novalidate="true">
+                        <input id="mc-email" autocomplete="off" placeholder="Enter your email here" name="EMAIL" type="email">
+                        <button id="mc-submit"><i class="fa fa-paper-plane-o"></i></button>
+                    </form>
+                    <!-- mailchimp-alerts Start -->
+                    <div class="mailchimp-alerts">
+                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                    </div><!-- mailchimp-alerts end -->
+
+                    <h5>FOLLOW US</h5>
+                    <p class="footer-social"><a href="#">Facebook</a> - <a href="#">Twitter</a> - <a href="#">Google+</a></p>
+
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Footer Top Section End -->
+
+    <!-- Footer Bottom Section Start -->
+    <div class="footer-bottom-section section bg-theme-two pt-15 pb-15">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p class="footer-copyright">Copyright &copy; All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </div><!-- Footer Bottom Section End -->
+</div>
+
+<script src="{% static "zascat/assets/js/vendor/jquery-1.12.4.min.js" %}"></script>
+<script src="{% static "zascat/assets/js/popper.min.js" %}"></script>
+<script src="{% static "zascat/assets/js/bootstrap.min.js"%}"></script>
+<script src="{% static "zascat/assets/js/plugins.js"%}"></script>
+<script src="{% static "zascat/assets/js/ajax-mail.js"%}"></script>
+<script src="{% static "zascat/assets/js/main.js" %}"></script>
+
 </body>
 </html>

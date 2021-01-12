@@ -1,6 +1,6 @@
 {% extends 'zascat/base.html' %}
 {% load static %}
-{% block title %}Препараты {{ cat_name }}{% endblock %}
+{% block title %}Каталог препаратов ООО "Фирма "Зеленая Аптека Садовода"{% endblock%}
 {% block content %}
         <!-- Page Banner Section Start -->
     <div class="page-banner-section section" style="background-image: url({% static "zascat/img/core-img/hero-5.jpg" %})">
@@ -8,12 +8,11 @@
             <div class="row">
                 <div class="page-banner-content col">
 
-                    <h1>Препараты {{ cat_name }}</h1>
+                    <h1>Продукция</h1>
                         {% block crumbs %}
                     <ul class="page-breadcrumb">
                         <li><a href="/">Главная</a></li>
-                        <li><a href="{% url 'zascat:index' %}">Продукция</a></li>
-                        <li><a href="#">{{ cat_name }}</a></li>
+                        <li><a href="/product/">Продукция</a></li>
                     </ul>
                         {% endblock crumbs %}
                 </div>
@@ -25,25 +24,25 @@
     <div class="blog-section section mt-80 mt-lg-60 mt-md-60 mt-sm-60 mt-xs-40 mb-80 mb-lg-60 mb-md-60 mb-sm-60 mb-xs-40">
         <div class="container">
             <div class="row">
-             {% for prep in preps_list %}
+            {% for item in cat_list %}
                 <div class="col-lg-6 col-12 mb-60 mb-xs-40">
                     <div class="blog-item">
                         <div class="image-wrap">
-                            {% if prep.prep_preview_image %}
-                                    <a class="image" href="{{ prep.prep_eng_name }}">
-                                        <img src="/media/{{ prep.prep_preview_image }}" alt="{{ prep.prep_name }}">
+                            {% if item.img %}
+                                    <a class="image" href="{{ item.cat_hfu }}">
+                                        <img src="/media/{{ item.img }}" alt="{{ item.name }}">
                                     </a>
                             {% endif %}
 
                         </div>
                         <div class="content">
-                            <h4 class="title"><a href="{{ prep.prep_eng_name }}">{{ prep.prep_name }}</a></h4>
+                            <h4 class="title"><a href="{{ item.cat_hfu }}">{{ item.name }}</a></h4>
                             <div class="desc">
-                                <p class="prep_contents">{{ prep.prep_preview_contains | safe}}</p>
-                                <p>{{ prep.prep_preview_desc | safe}}</p>
+                                <p>{{ item.text }}</p>
                             </div>
                             <ul class="meta">
-
+                                <li>Препаратов: </li>
+                                <li>{{ item.category__count}}</li>
                             </ul>
                         </div>
                     </div>
