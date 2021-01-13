@@ -3,9 +3,7 @@
 __pycache__
 /venv
 db.sqlite3
-/static
 .DS_Store
-/media
 /assets
 /.ideagit rm -r --cached FolderName
 .idea
