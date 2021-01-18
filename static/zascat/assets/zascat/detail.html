@@ -1,0 +1,67 @@
+{% extends 'zascat/../../../../../zascorp/templates/zascat/base_oldnewer.html' %}
+{% block title %}{{ preps.prep_name }} {{ preps.prep_header }}{% endblock title %}
+    {% load static %}
+    {% block crumbs %}
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img src="{% static "zascat/img/core-img/breadcrumb-line.png" %}" alt="">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/cat/"><i class="fa fa-home"></i> Каталог</a></li>
+                            <li class="breadcrumb-item"><a href="/cat/{{ catalog.id }}">{{ catalog.name }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ preps.prep_name }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock crumbs %}
+{% block content %}
+
+
+
+                    <div class="post-content">
+                    <h1>{{ preps.prep_name }}</h1>
+                    <p class="post-date">{{ preps.prep_preview_contains }}</p>
+                        {% if imgs %}
+                        {% for img in imgs %}
+                            <a href="/media/{{ img.src }}" data-fancybox="gallery">
+                                <img src="/media/{{ img.src }}" width="100px"/>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                    <br />
+                    <h2 class="post-title">{{ preps.prep_header }}</h2>
+                        {{ preps.prep_advert |safe }}
+                    <p>{{ preps.prep_package_table|safe }}</p>
+                    <blockquote>
+                        <div class="blockquote-icon">
+                            <img src="{% static "zascat/img/core-img/quote.png" %}" alt="">
+                        </div>
+                        <div class="blockquote-text">
+                            <h6>That’s not to say you’ll have the exact same thing if you stop by: the restaurant’s
+                                menus change constantly, based on seasonal ingredients.</h6>
+                            <h6>Ollie Schneider</h6>
+                        </div>
+                    </blockquote>
+                    <h4>You have 4 free articles remaining.</h4>
+                    <p>A deconstructed gyoza started things off on my visit, topping a crisp won ton cracker with sweet
+                        and spicy candied ginger, a tender bite of smoky Peking duck and an aromatic cucumber gel for a
+                        crunchy and fragrant amuse bouche. Seven equally creative courses followed, often balancing
+                        sweet notes with bracing acidity.</p>
+                    <p>A sweet-and-sour sea bass tartare, decorated with apple chips, mango chunks and creamy avocado
+                        purée, tasted more like a ceviche, while a green mango salad bathed in crisp passion fruit
+                        dressing contrasted tropical fruit flavors with juicy chunks of slow-cooked beef tenderloin.</p>
+
+                    <ul>
+                        <li>{{ preps.prep_header }}</li>
+                        <li>{{ preps.prep_desc }}</li>
+                        <li>{{ preps.prep_advert|safe }}</li>
+                        <li>{{ preps.prep_package_table|safe }}</li>
+                    </ul>
+                </div>
+
+{% endblock %}

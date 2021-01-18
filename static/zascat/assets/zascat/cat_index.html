@@ -1,0 +1,41 @@
+{% extends 'zascat/../../../../../zascorp/templates/zascat/base.html' %}
+{% block title %}Каталог препаратов ООО "Фирма "Зеленая Аптека Садовода"{% endblock%}
+    {% load static %}
+    {% block crumbs %}
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img src="{% static "zascat/img/core-img/breadcrumb-line.png" %}" alt="">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-home"></i> Каталог</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock crumbs %}
+{% block content %}
+
+    <p>{{ STATIC_URL }}</p>
+
+    <div class="row ">
+        {% for item in cat_list %}
+            <div class="col-sm-4">
+
+                <div class="media">
+                {% if item.img %}
+                    <img class="mr-3" src="/media/{{ item.img }}" alt="{{ item.name }}">
+                {% endif %}
+                </div>
+             <div class="media-body">
+            <a href="{{ item.id }}"> <h5 class="mt-0">{{ item.name }}</h5></a>
+                {{ item.text }}
+            </div>
+
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}
