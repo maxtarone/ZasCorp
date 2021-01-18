@@ -1,0 +1,42 @@
+{% extends 'zascat/../../../../../zascorp/templates/zascat/base_oldnewer.html' %}
+{% block title %}Препараты {{ cat_name }}{% endblock %}
+    {% load static %}
+    {% block crumbs %}
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img src="{% static "zascat/img/core-img/breadcrumb-line.png" %}" alt="">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/cat/"><i class="fa fa-home"></i> Каталог</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ cat_name.name }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock crumbs %}
+{% block content %}
+
+
+
+        <div class="row">
+        {% for preps in preps_list %}
+            <div class="col-sm-4">
+            <div class="media-body">
+            <a href="{{ preps.id }}"> <h5 class="mt-0">{{ preps.prep_name }}</h5></a>
+                <ul>
+                <li>{{ preps.prep_header }}</li>
+                <li>{{ preps.prep_desc }}</li>
+                </ul>
+            </div>
+            </div>
+            {% empty %}
+            <br/>
+            <h2>Категоря пуста</h2>
+        {% endfor %}
+        </div>
+
+{% endblock %}
